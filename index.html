@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TZUY HUB - GET KEY SYSTEM</title>
+    <title>TZUY HUB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,25 +54,24 @@
         <header class="text-center">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-white/10 text-xs font-mono font-semibold text-cyan-300 mb-3">
                 <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                <span>TZUY HUB • GET KEY 1S</span>
+                <span>TZUY HUB • 24H</span>
             </div>
             <h1 class="text-3xl sm:text-5xl font-bold tracking-tight">
                 <span class="title-gradient">TZUY HUB</span>
-                <span class="text-white"> — GET KEY</span>
             </h1>
             <p class="text-slate-400 text-sm sm:text-base mt-2">
-                Chờ 1s để nhận Key kích hoạt <span class="text-cyan-400 font-semibold">36 giờ</span>
+                Nhận Key 24Giờ
             </p>
         </header>
 
         <section id="view-start" class="glass-card rounded-2xl p-6 sm:p-8 text-center">
-            <h2 class="text-lg sm:text-xl font-bold text-white">Hệ Thống Nhận Key Tzuy Hub</h2>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Nhận Key 24Giờ</h2>
             <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-md mx-auto">
-                Bấm "Nhận Key" để bắt đầu (1s) và nhận Key 36 giờ.
+                Bấm nút bên dưới để nhận Key 24Giờ.
             </p>
             <div class="mt-6">
-                <button type="button" onclick="openBypassStep()" class="w-full sm:w-auto min-w-[220px] py-4 px-8 rounded-xl main-cta text-white font-bold text-sm sm:text-base cursor-pointer shadow-lg">
-                    Nhận Key
+                <button type="button" onclick="openBypassStep()" class="w-full sm:w-auto min-w-[240px] py-4 px-8 rounded-xl main-cta text-white font-bold text-sm sm:text-base cursor-pointer shadow-lg">
+                    Bấm Để Nhận Key 24Giờ
                 </button>
             </div>
         </section>
@@ -80,7 +79,7 @@
         <section id="view-bypass-step" class="hidden glass-card rounded-2xl p-6 sm:p-8 border-cyan-500/35">
             <div class="flex items-center justify-between gap-2 pb-4 border-b border-white/10">
                 <div>
-                    <span class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">Xác Thực (1s)</span>
+                    <span class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">Xác Thực</span>
                     <h2 class="text-xl font-bold text-white mt-0.5">Đang chuẩn bị Key...</h2>
                 </div>
                 <button type="button" onclick="backToStart()" class="text-xs text-slate-400 hover:text-white cursor-pointer">
@@ -93,11 +92,11 @@
                     <div>
                         <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Thời gian chờ</div>
                         <div id="bypass-timer-text" class="font-mono text-2xl font-extrabold text-emerald-400 mt-1">1.0s</div>
-                        <p id="bypass-status-note" class="text-xs text-slate-400 mt-1">Chờ 1 giây để mở khóa nhận Key...</p>
+                        <p id="bypass-status-note" class="text-xs text-slate-400 mt-1">Vui lòng đợi trong giây lát...</p>
                     </div>
 
                     <button id="claim-key-btn" type="button" disabled onclick="claimKeyAfterBypass()" class="w-full sm:w-auto py-3.5 px-6 rounded-xl main-cta text-white text-sm font-bold opacity-45 cursor-not-allowed transition">
-                        Nhận Key Ngay
+                        Bấm Để Nhận Key 24Giờ
                     </button>
                 </div>
             </div>
@@ -107,11 +106,11 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/10">
                 <div>
                     <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">Hoàn Tất</span>
-                    <h2 class="text-xl font-bold text-white mt-0.5">Key Kích Hoạt Tzuy Hub (36 Giờ)</h2>
+                    <h2 class="text-xl font-bold text-white mt-0.5">Key Kích Hoạt Tzuy Hub (24 Giờ)</h2>
                 </div>
                 <div class="bg-slate-950/90 border border-cyan-500/30 rounded-xl px-4 py-2.5 text-center sm:text-right">
                     <div class="text-[11px] uppercase text-slate-400 font-semibold">Còn lại</div>
-                    <div id="key-countdown" class="font-mono text-xl font-extrabold text-cyan-400">35:59:59</div>
+                    <div id="key-countdown" class="font-mono text-xl font-extrabold text-cyan-400">23:59:59</div>
                 </div>
             </div>
 
@@ -127,20 +126,20 @@
             <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
                 <span>Hết hạn: <strong id="key-expire-text" class="font-mono text-slate-200">--</strong></span>
                 <button type="button" onclick="resetAll()" class="text-slate-400 hover:text-rose-300 cursor-pointer">
-                    Lấy Key mới
+                    Tạo Key mới
                 </button>
             </div>
         </section>
     </div>
 
     <footer class="max-w-4xl w-full mx-auto px-4 pb-8 text-xs text-slate-500 text-center">
-        © Tzuy Hub Key System • 1s • Thời hạn Key 36 Giờ
+        © Tzuy Hub • Thời hạn Key 24 Giờ
     </footer>
 
     <script>
-        const BYPASS_WAIT_MS = 1000; // 1 giây
-        const KEY_TTL_MS = 36 * 60 * 60 * 1000;
-        const STORAGE_KEY = 'tzuy_hub_key_1s_v2';
+        const BYPASS_WAIT_MS = 1000;
+        const KEY_TTL_MS = 24 * 60 * 60 * 1000;
+        const STORAGE_KEY = 'tzuy_hub_key_24h_v1';
 
         let activeSession = null;
         let bypassInterval = null;
@@ -162,7 +161,7 @@
             return Array.from(arr, x => chars[x % chars.length]).join('');
         }
 
-        function createKey36H() {
+        function createKey24H() {
             const parts = ['TZUY'];
             for (let i = 0; i < 9; i++) parts.push(randCode(4));
             parts.push('XNKT');
@@ -190,14 +189,14 @@
                 if (leftMs <= 0) {
                     clearInterval(bypassInterval);
                     document.getElementById('bypass-timer-text').textContent = '0.0s — Sẵn sàng!';
-                    document.getElementById('bypass-status-note').textContent = 'Đã đủ 1 giây. Bấm "Nhận Key Ngay".';
+                    document.getElementById('bypass-status-note').textContent = 'Bấm "Bấm Để Nhận Key 24Giờ".';
                     claimBtn.disabled = false;
                     claimBtn.classList.remove('opacity-45', 'cursor-not-allowed');
                     claimBtn.classList.add('cursor-pointer');
                 } else {
                     const secLeft = (leftMs / 1000).toFixed(1);
                     document.getElementById('bypass-timer-text').textContent = `${secLeft}s`;
-                    document.getElementById('bypass-status-note').textContent = `Chờ ${secLeft}s...`;
+                    document.getElementById('bypass-status-note').textContent = `Đang chờ ${secLeft}s...`;
                 }
             };
             updateTimer();
@@ -206,19 +205,19 @@
 
         function claimKeyAfterBypass() {
             if (!activeSession || Date.now() - activeSession.startedAt < BYPASS_WAIT_MS) {
-                showToast('Chưa đủ 1 giây.', 'error');
+                showToast('Chưa đủ thời gian chờ.', 'error');
                 return;
             }
             clearInterval(bypassInterval);
             const now = Date.now();
             const record = {
-                key: createKey36H(),
+                key: createKey24H(),
                 createdAt: now,
                 expiresAt: now + KEY_TTL_MS
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(record));
             showKeyView(record);
-            showToast('Đã nhận Key 36 giờ!', 'success');
+            showToast('Đã nhận Key 24Giờ!', 'success');
         }
 
         function showStartView() {
