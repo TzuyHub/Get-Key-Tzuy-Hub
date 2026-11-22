@@ -61,15 +61,14 @@
                 <span class="text-white"> — GET KEY</span>
             </h1>
             <p class="text-slate-400 text-sm sm:text-base mt-2">
-                Vượt link 1s để nhận Key kích hoạt <span class="text-cyan-400 font-semibold">36 giờ</span>
+                Chờ 1s để nhận Key kích hoạt <span class="text-cyan-400 font-semibold">36 giờ</span>
             </p>
         </header>
 
-        <!-- BƯỚC 1: HỢP NHẤT THÀNH 1 NÚT "NHẬN KEY" -->
         <section id="view-start" class="glass-card rounded-2xl p-6 sm:p-8 text-center">
             <h2 class="text-lg sm:text-xl font-bold text-white">Hệ Thống Nhận Key Tzuy Hub</h2>
             <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-md mx-auto">
-                Bấm "Nhận Key" để bắt đầu vượt link (1s) và nhận Key 36 giờ.
+                Bấm "Nhận Key" để bắt đầu (1s) và nhận Key 36 giờ.
             </p>
             <div class="mt-6">
                 <button type="button" onclick="openBypassStep()" class="w-full sm:w-auto min-w-[220px] py-4 px-8 rounded-xl main-cta text-white font-bold text-sm sm:text-base cursor-pointer shadow-lg">
@@ -78,29 +77,21 @@
             </div>
         </section>
 
-        <!-- BƯỚC 2: VƯỢT LINK (1S) -->
         <section id="view-bypass-step" class="hidden glass-card rounded-2xl p-6 sm:p-8 border-cyan-500/35">
             <div class="flex items-center justify-between gap-2 pb-4 border-b border-white/10">
                 <div>
-                    <span class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">Bước 1 / 2 • Vượt Link (1s)</span>
-                    <h2 class="text-xl font-bold text-white mt-0.5">Đang xác thực liên kết...</h2>
+                    <span class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">Xác Thực (1s)</span>
+                    <h2 class="text-xl font-bold text-white mt-0.5">Đang chuẩn bị Key...</h2>
                 </div>
                 <button type="button" onclick="backToStart()" class="text-xs text-slate-400 hover:text-white cursor-pointer">
                     ← Quay lại
                 </button>
             </div>
 
-            <div class="mt-5 space-y-4">
-                <div class="bg-slate-950/90 border border-white/10 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <code id="bypass-link-url" class="font-mono text-xs text-cyan-300 break-all">--</code>
-                    <a id="bypass-external-anchor" href="#" target="_blank" rel="noopener noreferrer" class="shrink-0 py-2 px-4 rounded-lg bg-white/10 hover:bg-white/15 text-white text-xs font-bold text-center">
-                        Mở link
-                    </a>
-                </div>
-
+            <div class="mt-5">
                 <div class="bg-slate-950/90 border border-cyan-500/25 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div>
-                        <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Thời gian chờ vượt link</div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Thời gian chờ</div>
                         <div id="bypass-timer-text" class="font-mono text-2xl font-extrabold text-emerald-400 mt-1">1.0s</div>
                         <p id="bypass-status-note" class="text-xs text-slate-400 mt-1">Chờ 1 giây để mở khóa nhận Key...</p>
                     </div>
@@ -112,7 +103,6 @@
             </div>
         </section>
 
-        <!-- BƯỚC 3: HIỂN THỊ KEY 36 GIỜ -->
         <section id="view-key-result" class="hidden glass-card rounded-2xl p-6 sm:p-8 border-emerald-500/35">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/10">
                 <div>
@@ -144,14 +134,13 @@
     </div>
 
     <footer class="max-w-4xl w-full mx-auto px-4 pb-8 text-xs text-slate-500 text-center">
-        © Tzuy Hub Key System • Vượt link 1s • Thời hạn Key 36 Giờ
+        © Tzuy Hub Key System • 1s • Thời hạn Key 36 Giờ
     </footer>
 
     <script>
         const BYPASS_WAIT_MS = 1000; // 1 giây
         const KEY_TTL_MS = 36 * 60 * 60 * 1000;
-        const STORAGE_KEY = 'tzuy_hub_key_1s_v1';
-        const SHORTLINK_URL = ''; // Dán link rút gọn thật vào đây nếu muốn dùng link ngoài
+        const STORAGE_KEY = 'tzuy_hub_key_1s_v2';
 
         let activeSession = null;
         let bypassInterval = null;
@@ -180,31 +169,14 @@
             return parts.join('-');
         }
 
-        function buildBypassUrl(token) {
-            const configured = SHORTLINK_URL.trim();
-            if (configured) {
-                const sep = configured.includes('?') ? '&' : '?';
-                return `${configured}${sep}token=${encodeURIComponent(token)}`;
-            }
-            const u = new URL(window.location.href);
-            u.search = '';
-            u.hash = '';
-            return `${u.toString()}?bypass=1&token=${encodeURIComponent(token)}`;
-        }
-
         function openBypassStep() {
             const token = 'TOK_' + randCode(18);
             const startedAt = Date.now();
-            const bypassUrl = buildBypassUrl(token);
-
-            activeSession = { token, startedAt, bypassUrl };
+            activeSession = { token, startedAt };
 
             document.getElementById('view-start').classList.add('hidden');
             document.getElementById('view-key-result').classList.add('hidden');
             document.getElementById('view-bypass-step').classList.remove('hidden');
-
-            document.getElementById('bypass-link-url').textContent = bypassUrl;
-            document.getElementById('bypass-external-anchor').href = bypassUrl;
 
             const claimBtn = document.getElementById('claim-key-btn');
             claimBtn.disabled = true;
@@ -234,7 +206,7 @@
 
         function claimKeyAfterBypass() {
             if (!activeSession || Date.now() - activeSession.startedAt < BYPASS_WAIT_MS) {
-                showToast('Chưa đủ 1 giây vượt link.', 'error');
+                showToast('Chưa đủ 1 giây.', 'error');
                 return;
             }
             clearInterval(bypassInterval);
