@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TZUY HUB — GET KEY</title>
+    <title>TZUY HUB - GET KEY SYSTEM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +17,10 @@
                     fontFamily: {
                         sans: ['Space Grotesk', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 4s linear infinite',
                     }
                 }
             }
@@ -28,450 +32,805 @@
             background-image:
                 radial-gradient(circle at 15% 15%, rgba(168, 85, 247, 0.16) 0%, transparent 42%),
                 radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.14) 0%, transparent 42%),
+                radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 55%),
                 linear-gradient(to bottom, rgba(5, 5, 10, 0.94), rgba(5, 5, 10, 0.99));
             min-height: 100vh;
             color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .cyber-grid {
+            background-size: 32px 32px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
         }
         .glass-card {
-            background: rgba(13, 15, 26, 0.86);
-            backdrop-filter: blur(18px);
+            background: rgba(13, 15, 26, 0.84);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+        }
+        .method-card {
+            background: rgba(9, 11, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .method-card:hover {
+            transform: translateY(-4px);
+        }
+        .method-card:active {
+            transform: scale(0.985);
         }
         .title-gradient {
             background: linear-gradient(95deg, #c084fc 0%, #38bdf8 50%, #34d399 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .copy-cta {
+            background: linear-gradient(135deg, #7e22ce 0%, #0284c7 50%, #059669 100%);
+            background-size: 200% auto;
+            transition: all 0.3s ease;
+        }
+        .copy-cta:hover {
+            background-position: right center;
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.45);
+        }
     </style>
 </head>
-<body class="font-sans antialiased flex flex-col justify-between">
-    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full px-4 sm:px-0 pointer-events-none"></div>
+<body class="cyber-grid font-sans antialiased selection:bg-purple-600 selection:text-white flex flex-col justify-between">
 
-    <div class="max-w-4xl w-full mx-auto px-4 py-10 sm:py-14">
-        <header class="text-center mb-10">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-white/10 text-xs font-mono font-semibold text-cyan-300 mb-4">
-                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                <span>TZUY HUB • UNIFIED KEY SYSTEM</span>
+    <div class="fixed top-14 left-6 w-72 h-72 bg-purple-600/15 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+    <div class="fixed bottom-12 right-6 w-80 h-80 bg-emerald-500/12 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+
+    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2.5 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+
+    <div class="relative z-10 max-w-4xl w-full mx-auto px-4 py-10 sm:py-14">
+
+        <header class="text-center mb-9 sm:mb-11">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-white/10 text-xs font-mono font-semibold text-cyan-300 mb-4 shadow-lg">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span class="tracking-wider">TZUY HUB • OFFICIAL KEY GATEWAY</span>
             </div>
+
             <h1 class="text-3xl sm:text-5xl font-bold tracking-tight mb-3">
                 <span class="title-gradient">TZUY HUB</span>
                 <span class="text-white"> — GET KEY</span>
             </h1>
-            <p class="text-slate-400 text-sm sm:text-base">
-                Hoàn thành vượt link để nhận Key kích hoạt <span class="text-cyan-400 font-semibold">36 giờ</span>
+            <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
+                Hoàn thành vượt link để nhận Key kích hoạt <span class="text-cyan-400 font-semibold">36 giờ</span> • Không cần đăng nhập
             </p>
         </header>
 
         <main class="space-y-6">
+
             <section id="view-select-method" class="glass-card rounded-2xl p-6 sm:p-8">
-                <div class="flex items-center justify-between gap-2 mb-6">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
                     <div>
-                        <h2 class="text-lg sm:text-xl font-bold text-white">Chọn Phương Thức Get Key</h2>
-                        <p class="text-xs text-slate-400 mt-1">Một luồng thống nhất: tạo phiên → vượt link → xác thực token → nhận Key 36h.</p>
+                        <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-purple-400"></i>
+                            <span>Chọn Phương Thức Get Key</span>
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-1">Bấm vào dịch vụ bên dưới để mở liên kết vượt link và nhận Key tự động.</p>
                     </div>
-                    <span class="text-xs text-slate-300 bg-white/5 px-3 py-1.5 rounded-xl border border-white/10 font-mono">36H KEY</span>
+                    <span class="text-xs text-slate-300 bg-white/5 px-3 py-1.5 rounded-xl border border-white/10 font-mono">
+                        36H KEY • FREE
+                    </span>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button type="button" onclick="startGetKeyMethod('ontops')" class="text-left rounded-2xl p-5 bg-slate-950/80 border border-white/10 hover:border-purple-500/70 transition cursor-pointer">
-                        <div class="text-lg font-bold text-white font-mono">ontops.link</div>
-                        <p class="text-xs text-purple-400 mt-1">Tốc độ nhanh • Khuyên dùng</p>
+
+                    <button type="button" onclick="startGetKeyMethod('ontops')" class="method-card group text-left rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden cursor-pointer hover:border-purple-500/75 hover:bg-purple-950/20 hover:shadow-xl hover:shadow-purple-500/15">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-purple-600 to-fuchsia-600 flex items-center justify-center text-white shadow-lg shadow-purple-600/30">
+                                    <i data-lucide="zap" class="w-5 h-5"></i>
+                                </div>
+                                <span class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-purple-500/20 border border-white/10 group-hover:border-purple-400/50 flex items-center justify-center text-slate-400 group-hover:text-purple-300 transition">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white font-mono group-hover:text-purple-300 transition">ontops.link</h3>
+                            <p class="text-xs font-medium text-purple-400 mt-1">Tốc độ nhanh • Khuyên dùng</p>
+                        </div>
+                        <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 group-hover:text-slate-200 transition">
+                            <span>Bắt đầu vượt link</span>
+                            <span class="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Online
+                            </span>
+                        </div>
                     </button>
 
-                    <button type="button" onclick="startGetKeyMethod('gtraffic')" class="text-left rounded-2xl p-5 bg-slate-950/80 border border-white/10 hover:border-cyan-500/70 transition cursor-pointer">
-                        <div class="text-lg font-bold text-white font-mono">gtraffic.io</div>
-                        <p class="text-xs text-cyan-400 mt-1">Máy chủ ổn định</p>
+                    <button type="button" onclick="startGetKeyMethod('gtraffic')" class="method-card group text-left rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden cursor-pointer hover:border-cyan-500/75 hover:bg-cyan-950/20 hover:shadow-xl hover:shadow-cyan-500/15">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-cyan-600/30">
+                                    <i data-lucide="server" class="w-5 h-5"></i>
+                                </div>
+                                <span class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-cyan-500/20 border border-white/10 group-hover:border-cyan-400/50 flex items-center justify-center text-slate-400 group-hover:text-cyan-300 transition">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white font-mono group-hover:text-cyan-300 transition">gtraffic.io</h3>
+                            <p class="text-xs font-medium text-cyan-400 mt-1">Máy chủ ổn định</p>
+                        </div>
+                        <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 group-hover:text-slate-200 transition">
+                            <span>Bắt đầu vượt link</span>
+                            <span class="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Online
+                            </span>
+                        </div>
                     </button>
 
-                    <button type="button" onclick="startGetKeyMethod('direct')" class="text-left rounded-2xl p-5 bg-slate-950/80 border border-white/10 hover:border-emerald-500/70 transition cursor-pointer">
-                        <div class="text-lg font-bold text-white font-mono">direct.gtraffic.io</div>
-                        <p class="text-xs text-emerald-400 mt-1">Direct Link • Chuyển hướng trực tiếp</p>
+                    <button type="button" onclick="startGetKeyMethod('direct')" class="method-card group text-left rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden cursor-pointer hover:border-emerald-500/75 hover:bg-emerald-950/20 hover:shadow-xl hover:shadow-emerald-500/15">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-lg shadow-emerald-600/30">
+                                    <i data-lucide="rocket" class="w-5 h-5"></i>
+                                </div>
+                                <span class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-emerald-500/20 border border-white/10 group-hover:border-emerald-400/50 flex items-center justify-center text-slate-400 group-hover:text-emerald-300 transition">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white font-mono group-hover:text-emerald-300 transition">direct.gtraffic.io</h3>
+                            <p class="text-xs font-medium text-emerald-400 mt-1">Direct Link • Chuyển hướng trực tiếp</p>
+                        </div>
+                        <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 group-hover:text-slate-200 transition">
+                            <span>Bắt đầu vượt link</span>
+                            <span class="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Online
+                            </span>
+                        </div>
                     </button>
+
                 </div>
             </section>
 
-            <section id="view-waiting-callback" class="hidden glass-card rounded-2xl p-6 sm:p-9 text-center">
-                <h2 class="text-xl sm:text-2xl font-bold text-white">Đang chờ xác nhận vượt link...</h2>
-                <p class="text-sm text-slate-400 mt-2 max-w-lg mx-auto">
-                    Phiên hiện tại qua <span id="waiting-service-label" class="font-mono font-semibold text-cyan-300">ontops.link</span>. Hoàn tất liên kết rồi bấm xác nhận bên dưới.
-                </p>
-                <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <button type="button" onclick="confirmShortlinkCompletion()" class="w-full sm:w-auto py-3 px-6 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-600 text-white text-sm font-bold cursor-pointer">
-                        Xác nhận đã vượt link
-                    </button>
-                    <button type="button" onclick="reopenActiveShortlink()" class="w-full sm:w-auto py-3 px-5 rounded-xl bg-white/5 border border-white/15 text-slate-200 text-sm font-semibold cursor-pointer">
-                        Mở lại link
-                    </button>
-                </div>
-                <div class="mt-4">
-                    <button type="button" onclick="cancelActiveSession()" class="text-xs text-slate-400 hover:text-white cursor-pointer">
-                        Quay lại chọn phương thức khác
-                    </button>
-                </div>
-            </section>
-
-            <section id="view-key-result" class="hidden glass-card rounded-2xl p-6 sm:p-8 border-emerald-500/35">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/10">
-                    <div>
-                        <h2 class="text-xl font-bold text-white">Key Kích Hoạt Tzuy Hub</h2>
-                        <p class="text-xs text-slate-400 mt-0.5">
-                            Nguồn: <span id="result-service-used" class="text-emerald-300 font-mono font-semibold">ontops.link</span>
-                        </p>
+            <section id="view-waiting-callback" class="hidden glass-card rounded-2xl p-6 sm:p-9 border-cyan-500/30">
+                <div class="text-center max-w-lg mx-auto">
+                    <div class="relative inline-flex items-center justify-center w-16 h-16 mb-5">
+                        <div class="absolute inset-0 rounded-2xl border-2 border-dashed border-cyan-400/50 animate-spin-slow"></div>
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/15 border border-cyan-400/30 flex items-center justify-center text-cyan-300">
+                            <i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i>
+                        </div>
                     </div>
+
+                    <h2 class="text-xl sm:text-2xl font-bold text-white">
+                        Đang chờ xác nhận vượt link...
+                    </h2>
+                    <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+                        Bạn đang thực hiện vượt link qua <span id="waiting-service-label" class="font-mono font-semibold text-cyan-300">ontops.link</span>. Sau khi hoàn tất bước kiểm tra trên trang liên kết, bấm xác nhận bên dưới.
+                    </p>
+
+                    <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+                        <button type="button" onclick="confirmShortlinkCompletion()" class="w-full sm:w-auto py-3 px-6 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white text-xs sm:text-sm font-bold inline-flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 transition cursor-pointer">
+                            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                            <span>Xác nhận đã vượt link</span>
+                        </button>
+
+                        <button type="button" onclick="reopenActiveShortlink()" class="w-full sm:w-auto py-3 px-5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 text-xs sm:text-sm font-semibold inline-flex items-center justify-center gap-2 transition cursor-pointer">
+                            <i data-lucide="external-link" class="w-4 h-4 text-cyan-400"></i>
+                            <span>Mở lại link</span>
+                        </button>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="button" onclick="cancelActiveSession()" class="text-xs text-slate-500 hover:text-slate-300 inline-flex items-center gap-1 transition cursor-pointer">
+                            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                            <span>Quay lại chọn phương thức khác</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-key-result" class="hidden glass-card rounded-2xl p-6 sm:p-8 border-emerald-500/35 relative overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-56 h-56 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/10">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
+                            <i data-lucide="key-round" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 class="text-xl font-bold text-white">Key Kích Hoạt Tzuy Hub</h2>
+                                <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono">36 GIỜ</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-0.5">
+                                Nguồn vượt link: <span id="result-service-used" class="text-emerald-300 font-mono font-semibold">ontops.link</span>
+                            </p>
+                        </div>
+                    </div>
+
                     <div class="bg-slate-950/90 border border-cyan-500/30 rounded-xl px-4 py-2.5 text-center sm:text-right">
-                        <div class="text-[11px] uppercase text-slate-400 font-semibold">Thời hạn còn lại</div>
-                        <div id="key-countdown-display" class="font-mono text-xl sm:text-2xl font-extrabold text-cyan-400">35:59:59</div>
+                        <div class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Thời hạn còn lại</div>
+                        <div id="key-countdown-display" class="font-mono text-xl sm:text-2xl font-extrabold text-cyan-400 tracking-wider mt-0.5">
+                            35:59:59
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <div class="flex justify-between text-xs mb-1.5">
+                        <span class="text-slate-400">Tiến trình hiệu lực Key (36 Giờ)</span>
+                        <span id="key-progress-percent" class="text-emerald-400 font-mono font-semibold">100.0%</span>
+                    </div>
+                    <div class="w-full h-2 bg-slate-950 rounded-full overflow-hidden border border-white/10">
+                        <div id="key-progress-bar" class="h-full bg-gradient-to-r from-emerald-500 via-cyan-400 to-purple-500 transition-all duration-1000" style="width: 100%"></div>
                     </div>
                 </div>
 
                 <div class="mt-6">
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Mã Key của bạn:</label>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                        Mã Key của bạn (Định dạng chuẩn Tzuy Hub):
+                    </label>
                     <div class="flex flex-col gap-3">
-                        <div class="w-full bg-slate-950/95 border border-purple-500/40 rounded-xl px-4 py-4 overflow-x-auto">
-                            <code id="generated-key-code" class="font-mono text-xs sm:text-sm md:text-base font-bold text-cyan-200 whitespace-nowrap select-all"></code>
+                        <div class="w-full bg-slate-950/95 border border-purple-500/40 rounded-xl px-4 py-4 flex items-center justify-between gap-3 overflow-x-auto">
+                            <code id="generated-key-code" class="font-mono text-xs sm:text-sm md:text-base font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-cyan-200 to-emerald-300 whitespace-nowrap select-all">
+                                TZUY-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XNKT
+                            </code>
                         </div>
-                        <button type="button" id="copy-key-button" onclick="copyKeyToClipboard()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-purple-600 via-sky-600 to-emerald-600 text-white font-bold text-sm sm:text-base cursor-pointer">
+                        <button type="button" id="copy-key-button" onclick="copyKeyToClipboard()" class="w-full py-4 px-6 rounded-xl copy-cta text-white font-bold text-sm sm:text-base tracking-wide inline-flex items-center justify-center gap-2.5 shadow-xl cursor-pointer">
+                            <i id="copy-button-icon" data-lucide="copy" class="w-5 h-5"></i>
                             <span id="copy-button-text">SAO CHÉP KEY</span>
                         </button>
                     </div>
                 </div>
 
                 <div class="mt-5 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
-                    <div>Hết hạn lúc: <strong id="key-expire-timestamp" class="font-mono text-slate-200">--/--/---- --:--</strong></div>
-                    <button type="button" onclick="resetKeyAndSession()" class="text-slate-400 hover:text-rose-300 cursor-pointer">
-                        Tạo Key mới (Reset phiên)
+                    <div class="inline-flex items-center gap-1.5">
+                        <i data-lucide="clock" class="w-3.5 h-3.5 text-cyan-400"></i>
+                        <span>Hết hạn lúc: <strong id="key-expire-timestamp" class="font-mono text-slate-200">--/--/---- --:--</strong></span>
+                    </div>
+                    <button type="button" onclick="resetKeyAndSession()" class="text-slate-400 hover:text-rose-300 inline-flex items-center gap-1.5 font-medium transition cursor-pointer">
+                        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                        <span>Tạo Key mới (Reset phiên)</span>
                     </button>
                 </div>
             </section>
+
         </main>
     </div>
 
-    <footer class="max-w-4xl w-full mx-auto px-4 pt-4 pb-8 text-xs text-slate-500">
-        <div class="flex items-center justify-between border-t border-white/5 pt-5">
+    <footer class="relative z-10 max-w-4xl w-full mx-auto px-4 pt-4 pb-8 text-xs text-slate-500">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/5 pt-5">
             <p>© Tzuy Hub Key System • Thời hạn mỗi Key: 36 Giờ</p>
-            <span class="font-mono text-[11px] text-slate-600">UNIFIED</span>
+
+            <button type="button" onclick="toggleDevDrawer()" class="text-[11px] text-slate-600 hover:text-slate-400 transition inline-flex items-center gap-1.5 cursor-pointer">
+                <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+                <span>Test Dev</span>
+            </button>
+        </div>
+
+        <div id="dev-test-drawer" class="hidden mt-4 p-4 rounded-xl bg-slate-950/95 border border-white/10 max-w-xl mx-auto shadow-2xl">
+            <div class="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
+                <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-slate-300 inline-flex items-center gap-1.5">
+                    <i data-lucide="flask-conical" class="w-3.5 h-3.5 text-purple-400"></i>
+                    <span>Kiểm thử (2s nhận key)</span>
+                </span>
+                <button type="button" onclick="toggleDevDrawer()" class="text-slate-500 hover:text-white cursor-pointer">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <button type="button" onclick="devTestSimulateBypass()" class="py-2.5 px-3 rounded-lg bg-red-500/15 hover:bg-red-500/25 border border-red-500/40 text-red-300 text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition cursor-pointer">
+                    <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
+                    <span>Giả lập Bypass (Test bị chặn)</span>
+                </button>
+                <button type="button" onclick="devTestValidCompletion()" class="py-2.5 px-3 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition cursor-pointer">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+                    <span>Hoàn tất vượt link hợp lệ (Test nhận Key)</span>
+                </button>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Cấu hình thống nhất cho toàn bộ hệ thống Get Key Tzuy
-        const TZUY_CONFIG = {
-            KEY_TTL_MS: 36 * 60 * 60 * 1000,
-            STORAGE_KEY: 'tzuy_unified_key_v1',
-            STORAGE_SESSION: 'tzuy_unified_session_v1',
-            STORAGE_USED: 'tzuy_unified_used_tokens_v1',
-            SALT: 'TZUY_UNIFIED_GATEWAY_2026',
-            SHORTLINKS: {
-                ontops: '',
-                gtraffic: '',
-                direct: ''
+        const SHORTLINK_CONFIG = {
+            ontops: "",
+            gtraffic: "",
+            direct: ""
+        };
+
+        // Thời gian chờ nhận key: 2s cho tất cả phương thức
+        const METHOD_SPECS = {
+            ontops: {
+                id: 'ontops',
+                name: 'ontops.link',
+                minWaitMs: 2000,
+                badgeClass: 'text-purple-300'
             },
-            METHODS: {
-                ontops: { id: 'ontops', name: 'ontops.link', minWaitMs: 12000 },
-                gtraffic: { id: 'gtraffic', name: 'gtraffic.io', minWaitMs: 12000 },
-                direct: { id: 'direct', name: 'direct.gtraffic.io', minWaitMs: 10000 }
+            gtraffic: {
+                id: 'gtraffic',
+                name: 'gtraffic.io',
+                minWaitMs: 2000,
+                badgeClass: 'text-cyan-300'
+            },
+            direct: {
+                id: 'direct',
+                name: 'direct.gtraffic.io',
+                minWaitMs: 2000,
+                badgeClass: 'text-emerald-300'
             }
+        };
+
+        const SYSTEM_CONFIG = {
+            KEY_TTL_MS: 36 * 60 * 60 * 1000,
+            STORAGE_KEY: 'tzuy_hub_key_record_v5',
+            STORAGE_SESSION: 'tzuy_hub_silent_session_v5',
+            STORAGE_USED_TOKENS: 'tzuy_hub_used_tokens_v5',
+            SECRET_SALT: 'TZUY_HUB_ANTI_BYPASS_2026_CORE'
         };
 
         let countdownTimer = null;
 
         window.addEventListener('DOMContentLoaded', () => {
             if (window.lucide) lucide.createIcons();
-            initUnifiedSystem();
+            initializeGateway();
         });
 
-        function getCleanUrl() {
-            const u = new URL(window.location.href);
-            u.search = '';
-            u.hash = '';
-            return u.toString();
+        window.addEventListener('storage', (event) => {
+            if (event.key === SYSTEM_CONFIG.STORAGE_KEY && event.newValue) {
+                try {
+                    const parsedKey = JSON.parse(event.newValue);
+                    if (parsedKey && parsedKey.key && Date.now() < parsedKey.expiresAt) {
+                        showKeyResultView(parsedKey);
+                    }
+                } catch (e) {}
+            }
+        });
+
+        function getCleanCurrentUrl() {
+            const urlObj = new URL(window.location.href);
+            urlObj.search = '';
+            urlObj.hash = '';
+            return urlObj.toString();
         }
 
         function buildCallbackUrl(token) {
-            return `${getCleanUrl()}?step=done&token=${encodeURIComponent(token)}`;
+            return `${getCleanCurrentUrl()}?step=done&token=${encodeURIComponent(token)}`;
         }
 
-        function buildBuiltInTabUrl(spec, callbackUrl) {
-            const sec = Math.ceil(spec.minWaitMs / 1000);
-            const html = `<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><title>${spec.name}</title>
-<style>body{margin:0;font-family:system-ui,sans-serif;background:#070811;color:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh}.box{max-width:420px;width:90%;background:#101322;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px;text-align:center}.t{font-size:30px;font-weight:800;color:#34d399;margin:16px 0;font-family:monospace}button{width:100%;padding:12px;border:none;border-radius:10px;background:#0284c7;color:#fff;font-weight:700;opacity:.45;pointer-events:none;cursor:pointer}button.ready{opacity:1;pointer-events:auto}</style></head>
-<body><div class="box"><h2>${spec.name}</h2><p>Hoàn tất bước xác thực liên kết để nhận Key 36 giờ.</p><div class="t" id="s">${sec}s</div><button id="b" onclick="location.href='${callbackUrl.replace(/'/g, "\\'")}'">Nhận Key Tzuy</button></div>
-<script>let n=${sec};const s=document.getElementById('s'),b=document.getElementById('b'),iv=setInterval(()=>{n--;if(n<=0){clearInterval(iv);s.textContent='Sẵn sàng!';b.classList.add('ready')}else s.textContent=n+'s'},1000)<\/script></body></html>`;
-            return URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }));
-        }
-
-        function resolveTargetUrl(methodId, token) {
-            const spec = TZUY_CONFIG.METHODS[methodId] || TZUY_CONFIG.METHODS.ontops;
+        function resolveShortlinkTarget(methodId, token) {
+            const rawConfigured = (SHORTLINK_CONFIG[methodId] || '').trim();
             const callbackUrl = buildCallbackUrl(token);
-            const raw = (TZUY_CONFIG.SHORTLINKS[methodId] || '').trim();
-            if (!raw) return buildBuiltInTabUrl(spec, callbackUrl);
-            if (raw.includes('{callback}')) return raw.replace(/\{callback\}/g, encodeURIComponent(callbackUrl));
-            const sep = raw.includes('?') ? '&' : '?';
-            return `${raw}${sep}token=${encodeURIComponent(token)}&callback=${encodeURIComponent(callbackUrl)}`;
+
+            if (!rawConfigured) {
+                return buildBuiltInGatewayTabUrl(methodId, callbackUrl);
+            }
+
+            if (rawConfigured.includes('{callback}')) {
+                return rawConfigured.replace(/\{callback\}/g, encodeURIComponent(callbackUrl));
+            }
+
+            const separator = rawConfigured.includes('?') ? '&' : '?';
+            return `${rawConfigured}${separator}token=${encodeURIComponent(token)}&callback=${encodeURIComponent(callbackUrl)}`;
         }
 
-        function randomCode(len) {
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            const arr = new Uint32Array(len);
-            window.crypto.getRandomValues(arr);
-            return Array.from(arr, x => chars[x % chars.length]).join('');
+        function buildBuiltInGatewayTabUrl(methodId, callbackUrl) {
+            const spec = METHOD_SPECS[methodId] || METHOD_SPECS.ontops;
+            const waitSeconds = Math.max(1, Math.ceil(spec.minWaitMs / 1000)); // 2s
+            const htmlContent = `<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${spec.name} • Xác Thực Liên Kết</title>
+<style>
+  body { margin:0; font-family: system-ui, -apple-system, sans-serif; background:#070811; color:#f8fafc; display:flex; align-items:center; justify-content:center; min-height:100vh; padding:16px; }
+  .box { max-width:440px; width:100%; background:#101322; border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:28px; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,0.6); }
+  .badge { display:inline-block; padding:4px 12px; border-radius:999px; background:rgba(56,189,248,0.15); color:#38bdf8; font-size:12px; font-weight:700; margin-bottom:12px; }
+  h1 { font-size:20px; margin:0 0 8px; }
+  p { font-size:13px; color:#94a3b8; line-height:1.5; margin:0 0 20px; }
+  .timer { font-size:32px; font-weight:800; color:#34d399; font-family:monospace; margin-bottom:20px; }
+  button { width:100%; padding:13px 20px; border:none; border-radius:12px; font-weight:700; font-size:14px; cursor:pointer; background:linear-gradient(135deg,#7e22ce,#0284c7); color:#fff; opacity:0.45; pointer-events:none; transition:all 0.25s; }
+  button.ready { opacity:1; pointer-events:auto; box-shadow:0 0 24px rgba(56,189,248,0.4); }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="badge">${spec.name.toUpperCase()}</div>
+    <h1>Đang xác minh liên kết vượt link</h1>
+    <p>Chờ ${waitSeconds}s để nhận Key kích hoạt 36 giờ cho Tzuy Hub.</p>
+    <div class="timer" id="sec">${waitSeconds}s</div>
+    <button id="goBtn" onclick="window.location.href='${callbackUrl.replace(/'/g, "\\'")}'">Tiếp tục lấy Key</button>
+  </div>
+  <script>
+    let left = ${waitSeconds};
+    const secEl = document.getElementById('sec');
+    const btn = document.getElementById('goBtn');
+    const iv = setInterval(() => {
+      left--;
+      if (left <= 0) {
+        clearInterval(iv);
+        secEl.textContent = 'Sẵn sàng!';
+        btn.classList.add('ready');
+      } else {
+        secEl.textContent = left + 's';
+      }
+    }, 1000);
+  <\/script>
+</body>
+</html>`;
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            return URL.createObjectURL(blob);
         }
 
-        function generateKey36H() {
-            const parts = ['TZUY'];
-            for (let i = 0; i < 9; i++) parts.push(randomCode(4));
-            parts.push('XNKT');
-            return parts.join('-');
+        function initializeGateway() {
+            const savedKey = getValidStoredKey();
+            if (savedKey) {
+                showKeyResultView(savedKey);
+                return;
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            const hasCallbackStep = params.get('step') === 'done';
+            const hasTokenParam = params.has('token');
+
+            if (hasCallbackStep || hasTokenParam) {
+                const tokenFromUrl = params.get('token') || '';
+                window.history.replaceState({}, document.title, getCleanCurrentUrl());
+                verifySilentAntiBypass(tokenFromUrl);
+                return;
+            }
+
+            const activeSession = readSilentSession();
+            if (activeSession && !activeSession.used) {
+                showWaitingView(activeSession);
+            } else {
+                showSelectMethodView();
+            }
         }
 
-        function signSession(token, methodId, startTime) {
-            const raw = `${token}|${methodId}|${startTime}|${TZUY_CONFIG.SALT}`;
+        function startGetKeyMethod(methodId) {
+            const spec = METHOD_SPECS[methodId];
+            if (!spec) return;
+
+            const token = generateRandomAlphaNumeric(24);
+            const startTime = Date.now();
+            const signature = computeSessionSignature(token, methodId, startTime);
+
+            const sessionData = {
+                token,
+                methodId,
+                serviceName: spec.name,
+                startTime,
+                signature,
+                used: false
+            };
+
+            saveSilentSession(sessionData);
+
+            const targetUrl = resolveShortlinkTarget(methodId, token);
+            const popupWin = window.open(targetUrl, '_blank', 'noopener,noreferrer');
+            showWaitingView(sessionData);
+
+            if (!popupWin) {
+                showToast('Trình duyệt chặn tự mở tab mới. Hãy bấm nút "Mở lại link" bên dưới.', 'info');
+            } else {
+                showToast(`Đã mở ${spec.name}. Chờ 2s để nhận Key.`, 'info');
+            }
+        }
+
+        function reopenActiveShortlink() {
+            const session = readSilentSession();
+            if (!session) {
+                showSelectMethodView();
+                return;
+            }
+            const urlToOpen = resolveShortlinkTarget(session.methodId, session.token);
+            window.open(urlToOpen, '_blank', 'noopener,noreferrer');
+        }
+
+        function confirmShortlinkCompletion() {
+            const session = readSilentSession();
+            if (!session) {
+                triggerBypassRejected();
+                return;
+            }
+            verifySilentAntiBypass(session.token);
+        }
+
+        function cancelActiveSession() {
+            clearSilentSession();
+            showSelectMethodView();
+        }
+
+        function computeSessionSignature(token, methodId, startTime) {
+            const raw = `${token}|${methodId}|${startTime}|${SYSTEM_CONFIG.SECRET_SALT}`;
             let h1 = 0x811c9dc5;
             let h2 = 0x1b873593;
             for (let i = 0; i < raw.length; i++) {
                 const c = raw.charCodeAt(i);
-                h1 = Math.imul(h1 ^ c, 0x01000193);
-                h2 = Math.imul(h2 ^ (c + i), 0x85ebca6b);
+                h1 ^= c;
+                h1 = Math.imul(h1, 0x01000193);
+                h2 ^= c + i;
+                h2 = Math.imul(h2, 0x85ebca6b);
             }
             return (h1 >>> 0).toString(16).padStart(8, '0') + (h2 >>> 0).toString(16).padStart(8, '0');
         }
 
-        function saveSession(obj) {
-            const s = JSON.stringify(obj);
-            sessionStorage.setItem(TZUY_CONFIG.STORAGE_SESSION, s);
-            localStorage.setItem(TZUY_CONFIG.STORAGE_SESSION, s);
+        function saveSilentSession(sessionObj) {
+            const serialized = JSON.stringify(sessionObj);
+            sessionStorage.setItem(SYSTEM_CONFIG.STORAGE_SESSION, serialized);
+            localStorage.setItem(SYSTEM_CONFIG.STORAGE_SESSION, serialized);
         }
 
-        function readSession() {
+        function readSilentSession() {
             try {
-                const raw = sessionStorage.getItem(TZUY_CONFIG.STORAGE_SESSION) || localStorage.getItem(TZUY_CONFIG.STORAGE_SESSION);
+                const raw = sessionStorage.getItem(SYSTEM_CONFIG.STORAGE_SESSION) || localStorage.getItem(SYSTEM_CONFIG.STORAGE_SESSION);
                 return raw ? JSON.parse(raw) : null;
             } catch (e) {
                 return null;
             }
         }
 
-        function clearSession() {
-            sessionStorage.removeItem(TZUY_CONFIG.STORAGE_SESSION);
-            localStorage.removeItem(TZUY_CONFIG.STORAGE_SESSION);
+        function clearSilentSession() {
+            sessionStorage.removeItem(SYSTEM_CONFIG.STORAGE_SESSION);
+            localStorage.removeItem(SYSTEM_CONFIG.STORAGE_SESSION);
         }
 
-        function isTokenUsed(token) {
+        function hasTokenBeenUsed(token) {
             try {
-                const list = JSON.parse(localStorage.getItem(TZUY_CONFIG.STORAGE_USED) || '[]');
+                const list = JSON.parse(localStorage.getItem(SYSTEM_CONFIG.STORAGE_USED_TOKENS) || '[]');
                 return list.includes(token);
             } catch (e) {
                 return false;
             }
         }
 
-        function markTokenUsed(token) {
+        function markTokenAsUsed(token) {
             try {
-                const list = JSON.parse(localStorage.getItem(TZUY_CONFIG.STORAGE_USED) || '[]');
+                const list = JSON.parse(localStorage.getItem(SYSTEM_CONFIG.STORAGE_USED_TOKENS) || '[]');
                 list.push(token);
-                if (list.length > 100) list.shift();
-                localStorage.setItem(TZUY_CONFIG.STORAGE_USED, JSON.stringify(list));
+                if (list.length > 80) list.shift();
+                localStorage.setItem(SYSTEM_CONFIG.STORAGE_USED_TOKENS, JSON.stringify(list));
             } catch (e) {}
         }
 
-        function getValidKey() {
+        function verifySilentAntiBypass(incomingToken) {
+            const session = readSilentSession();
+
+            if (!session || session.used || !incomingToken || incomingToken !== session.token) {
+                triggerBypassRejected();
+                return;
+            }
+
+            if (hasTokenBeenUsed(incomingToken)) {
+                triggerBypassRejected();
+                return;
+            }
+
+            const expectedSig = computeSessionSignature(session.token, session.methodId, session.startTime);
+            if (session.signature !== expectedSig) {
+                triggerBypassRejected();
+                return;
+            }
+
+            const spec = METHOD_SPECS[session.methodId] || METHOD_SPECS.ontops;
+            const elapsedMs = Date.now() - Number(session.startTime || 0);
+            if (elapsedMs < spec.minWaitMs) {
+                triggerBypassRejected();
+                return;
+            }
+
+            session.used = true;
+            markTokenAsUsed(session.token);
+            clearSilentSession();
+
+            const now = Date.now();
+            const keyRecord = {
+                key: generateTzuyKey36H(),
+                serviceName: spec.name,
+                createdAt: now,
+                expiresAt: now + SYSTEM_CONFIG.KEY_TTL_MS
+            };
+
+            localStorage.setItem(SYSTEM_CONFIG.STORAGE_KEY, JSON.stringify(keyRecord));
+            showKeyResultView(keyRecord);
+            showToast('Xác thực thành công! Key kích hoạt 36 giờ đã sẵn sàng.', 'success');
+        }
+
+        function triggerBypassRejected() {
+            clearSilentSession();
+            showSelectMethodView();
+            showToast('Phiên xác thực không hợp lệ hoặc chưa đủ 2s. Vui lòng thử lại.', 'error');
+        }
+
+        function generateRandomAlphaNumeric(length) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            const array = new Uint32Array(length);
+            window.crypto.getRandomValues(array);
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += chars[array[i] % chars.length];
+            }
+            return result;
+        }
+
+        function generateTzuyKey36H() {
+            const segments = ['TZUY'];
+            for (let i = 0; i < 9; i++) {
+                segments.push(generateRandomAlphaNumeric(4));
+            }
+            segments.push('XNKT');
+            return segments.join('-');
+        }
+
+        function getValidStoredKey() {
             try {
-                const raw = localStorage.getItem(TZUY_CONFIG.STORAGE_KEY);
+                const raw = localStorage.getItem(SYSTEM_CONFIG.STORAGE_KEY);
                 if (!raw) return null;
-                const data = JSON.parse(raw);
-                if (!data || !data.key || Date.now() >= data.expiresAt) {
-                    localStorage.removeItem(TZUY_CONFIG.STORAGE_KEY);
+                const parsed = JSON.parse(raw);
+                if (!parsed || !parsed.key || Date.now() >= parsed.expiresAt) {
+                    localStorage.removeItem(SYSTEM_CONFIG.STORAGE_KEY);
                     return null;
                 }
-                return data;
+                return parsed;
             } catch (e) {
                 return null;
             }
         }
 
-        function initUnifiedSystem() {
-            const existing = getValidKey();
-            if (existing) {
-                showKeyView(existing);
-                return;
-            }
-
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('step') === 'done' || params.has('token')) {
-                const token = params.get('token') || '';
-                window.history.replaceState({}, document.title, getCleanUrl());
-                verifyTokenAndIssueKey(token);
-                return;
-            }
-
-            const active = readSession();
-            if (active && !active.used) {
-                showWaitingView(active);
-            } else {
-                showSelectView();
-            }
-        }
-
-        function startGetKeyMethod(methodId) {
-            const spec = TZUY_CONFIG.METHODS[methodId];
-            if (!spec) return;
-            const token = randomCode(24);
-            const startTime = Date.now();
-            const session = {
-                token,
-                methodId,
-                serviceName: spec.name,
-                startTime,
-                signature: signSession(token, methodId, startTime),
-                used: false
-            };
-            saveSession(session);
-            const target = resolveTargetUrl(methodId, token);
-            window.open(target, '_blank', 'noopener,noreferrer');
-            showWaitingView(session);
-            showToast(`Đã mở ${spec.name}. Hoàn tất liên kết để nhận Key.`, 'info');
-        }
-
-        function reopenActiveShortlink() {
-            const s = readSession();
-            if (!s) return showSelectView();
-            window.open(resolveTargetUrl(s.methodId, s.token), '_blank', 'noopener,noreferrer');
-        }
-
-        function confirmShortlinkCompletion() {
-            const s = readSession();
-            if (!s) return rejectToken('Phiên xác thực không tồn tại.');
-            verifyTokenAndIssueKey(s.token);
-        }
-
-        function cancelActiveSession() {
-            clearSession();
-            showSelectView();
-        }
-
-        function verifyTokenAndIssueKey(incomingToken) {
-            const s = readSession();
-            if (!s || s.used || !incomingToken || incomingToken !== s.token) {
-                return rejectToken('Token chưa được tạo, không hợp lệ hoặc phiên đã kết thúc.');
-            }
-            if (isTokenUsed(incomingToken)) {
-                return rejectToken('Token này đã được sử dụng.');
-            }
-            if (s.signature !== signSession(s.token, s.methodId, s.startTime)) {
-                return rejectToken('Chữ ký phiên không khớp.');
-            }
-            const spec = TZUY_CONFIG.METHODS[s.methodId] || TZUY_CONFIG.METHODS.ontops;
-            if (Date.now() - Number(s.startTime || 0) < spec.minWaitMs) {
-                return rejectToken('Chưa đủ thời gian xác thực liên kết.');
-            }
-
-            s.used = true;
-            markTokenUsed(s.token);
-            clearSession();
-
-            const now = Date.now();
-            const keyRecord = {
-                key: generateKey36H(),
-                serviceName: spec.name,
-                createdAt: now,
-                expiresAt: now + TZUY_CONFIG.KEY_TTL_MS
-            };
-            localStorage.setItem(TZUY_CONFIG.STORAGE_KEY, JSON.stringify(keyRecord));
-            showKeyView(keyRecord);
-            showToast('Xác thực thành công! Key 36 giờ đã được cấp.', 'success');
-        }
-
-        function rejectToken(msg) {
-            clearSession();
-            showSelectView();
-            showToast(msg, 'error');
-        }
-
         function resetKeyAndSession() {
             clearInterval(countdownTimer);
-            localStorage.removeItem(TZUY_CONFIG.STORAGE_KEY);
-            clearSession();
-            showSelectView();
-            showToast('Đã đặt lại phiên Get Key.', 'info');
+            localStorage.removeItem(SYSTEM_CONFIG.STORAGE_KEY);
+            clearSilentSession();
+            showSelectMethodView();
+            showToast('Đã đặt lại phiên. Vui lòng chọn một phương thức để lấy Key mới.', 'info');
         }
 
-        function showSelectView() {
+        function showSelectMethodView() {
             document.getElementById('view-select-method').classList.remove('hidden');
             document.getElementById('view-waiting-callback').classList.add('hidden');
             document.getElementById('view-key-result').classList.add('hidden');
         }
 
-        function showWaitingView(s) {
+        function showWaitingView(sessionObj) {
             document.getElementById('view-select-method').classList.add('hidden');
             document.getElementById('view-key-result').classList.add('hidden');
             document.getElementById('view-waiting-callback').classList.remove('hidden');
-            document.getElementById('waiting-service-label').textContent = s.serviceName;
+
+            const spec = METHOD_SPECS[sessionObj.methodId] || METHOD_SPECS.ontops;
+            const serviceLabel = document.getElementById('waiting-service-label');
+            serviceLabel.textContent = spec.name;
+            serviceLabel.className = `font-mono font-semibold ${spec.badgeClass}`;
         }
 
-        function showKeyView(record) {
+        function showKeyResultView(keyRecord) {
             document.getElementById('view-select-method').classList.add('hidden');
             document.getElementById('view-waiting-callback').classList.add('hidden');
             document.getElementById('view-key-result').classList.remove('hidden');
 
-            document.getElementById('generated-key-code').textContent = record.key;
-            document.getElementById('result-service-used').textContent = record.serviceName;
-            document.getElementById('key-expire-timestamp').textContent = new Date(record.expiresAt).toLocaleString('vi-VN');
+            document.getElementById('generated-key-code').textContent = keyRecord.key;
+            document.getElementById('result-service-used').textContent = keyRecord.serviceName;
+
+            const expireDate = new Date(keyRecord.expiresAt);
+            document.getElementById('key-expire-timestamp').textContent = expireDate.toLocaleString('vi-VN', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
 
             clearInterval(countdownTimer);
-            const tick = () => {
-                const diff = record.expiresAt - Date.now();
-                if (diff <= 0) {
-                    clearInterval(countdownTimer);
-                    localStorage.removeItem(TZUY_CONFIG.STORAGE_KEY);
-                    showSelectView();
-                    showToast('Key 36 giờ đã hết hạn.', 'error');
-                    return;
-                }
-                const totalSec = Math.floor(diff / 1000);
-                const h = String(Math.floor(totalSec / 3600)).padStart(2, '0');
-                const m = String(Math.floor((totalSec % 3600) / 60)).padStart(2, '0');
-                const s = String(totalSec % 60).padStart(2, '0');
-                document.getElementById('key-countdown-display').textContent = `${h}:${m}:${s}`;
-            };
-            tick();
-            countdownTimer = setInterval(tick, 1000);
+            updateKeyCountdown(keyRecord.expiresAt);
+            countdownTimer = setInterval(() => updateKeyCountdown(keyRecord.expiresAt), 1000);
         }
 
-        async function copyKeyToClipboard() {
-            const text = document.getElementById('generated-key-code').textContent.trim();
-            try {
-                if (navigator.clipboard && window.isSecureContext) {
-                    await navigator.clipboard.writeText(text);
-                } else {
-                    const ta = document.createElement('textarea');
-                    ta.value = text;
-                    document.body.appendChild(ta);
-                    ta.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(ta);
-                }
-                document.getElementById('copy-button-text').textContent = 'ĐÃ SAO CHÉP KEY!';
-                showToast('Đã sao chép Key vào bộ nhớ tạm.', 'success');
-                setTimeout(() => {
-                    document.getElementById('copy-button-text').textContent = 'SAO CHÉP KEY';
-                }, 2200);
-            } catch (e) {
-                showToast('Không thể sao chép tự động, hãy bôi đen mã Key.', 'error');
+        function updateKeyCountdown(expiresAt) {
+            const remainingMs = expiresAt - Date.now();
+            if (remainingMs <= 0) {
+                clearInterval(countdownTimer);
+                localStorage.removeItem(SYSTEM_CONFIG.STORAGE_KEY);
+                showSelectMethodView();
+                showToast('Key 36 giờ đã hết hạn. Vui lòng vượt link để nhận Key mới.', 'error');
+                return;
             }
+
+            const totalSeconds = Math.floor(remainingMs / 1000);
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            document.getElementById('key-countdown-display').textContent = [
+                String(hours).padStart(2, '0'),
+                String(minutes).padStart(2, '0'),
+                String(seconds).padStart(2, '0')
+            ].join(':');
+
+            const percentLeft = Math.max(0, Math.min(100, (remainingMs / SYSTEM_CONFIG.KEY_TTL_MS) * 100));
+            document.getElementById('key-progress-percent').textContent = `${percentLeft.toFixed(1)}%`;
+            document.getElementById('key-progress-bar').style.width = `${percentLeft}%`;
+        }
+
+        function copyKeyToClipboard() {
+            const keyText = document.getElementById('generated-key-code').textContent.trim();
+            const textarea = document.createElement('textarea');
+            textarea.value = keyText;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+            } catch (e) {}
+            document.body.removeChild(textarea);
+
+            const btnText = document.getElementById('copy-button-text');
+            btnText.textContent = 'ĐÃ SAO CHÉP VÀO BỘ NHỚ TẠM!';
+            showToast('Đã sao chép Key Tzuy Hub vào bộ nhớ tạm!', 'success');
+
+            setTimeout(() => {
+                btnText.textContent = 'SAO CHÉP KEY';
+            }, 2500);
         }
 
         function showToast(message, type = 'info') {
-            const box = document.getElementById('toast-container');
-            const el = document.createElement('div');
-            const tone = type === 'success'
-                ? 'bg-slate-900/95 border-emerald-500/45 text-emerald-200'
-                : type === 'error'
-                ? 'bg-rose-950/90 border-rose-500/50 text-rose-200'
-                : 'bg-slate-900/95 border-cyan-500/40 text-cyan-200';
-            el.className = `px-4 py-3 rounded-xl border text-xs sm:text-sm font-medium shadow-xl ${tone}`;
-            el.textContent = message;
-            box.appendChild(el);
-            setTimeout(() => el.remove(), 3500);
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+
+            let classes = 'bg-slate-900/95 border-cyan-500/40 text-cyan-200';
+            let icon = 'info';
+
+            if (type === 'success') {
+                classes = 'bg-slate-900/95 border-emerald-500/45 text-emerald-200';
+                icon = 'check-circle-2';
+            } else if (type === 'error') {
+                classes = 'bg-rose-950/90 border-rose-500/50 text-rose-200';
+                icon = 'alert-circle';
+            }
+
+            toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl border shadow-2xl backdrop-blur-md text-xs sm:text-sm font-medium transition-all duration-300 ${classes}`;
+            toast.innerHTML = `
+                <i data-lucide="${icon}" class="w-4 h-4 shrink-0"></i>
+                <span class="flex-1 leading-snug">${message}</span>
+            `;
+
+            container.appendChild(toast);
+            if (window.lucide) lucide.createIcons();
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(14px)';
+                setTimeout(() => toast.remove(), 280);
+            }, 3800);
+        }
+
+        function toggleDevDrawer() {
+            document.getElementById('dev-test-drawer').classList.toggle('hidden');
+        }
+
+        function devTestSimulateBypass() {
+            clearInterval(countdownTimer);
+            localStorage.removeItem(SYSTEM_CONFIG.STORAGE_KEY);
+            clearSilentSession();
+            verifySilentAntiBypass('BYPASS_DIRECT_' + generateRandomAlphaNumeric(8));
+        }
+
+        function devTestValidCompletion() {
+            clearInterval(countdownTimer);
+            localStorage.removeItem(SYSTEM_CONFIG.STORAGE_KEY);
+
+            const token = generateRandomAlphaNumeric(24);
+            const pastStartTime = Date.now() - 2500;
+            const signature = computeSessionSignature(token, 'ontops', pastStartTime);
+
+            saveSilentSession({
+                token,
+                methodId: 'ontops',
+                serviceName: 'ontops.link',
+                startTime: pastStartTime,
+                signature,
+                used: false
+            });
+
+            verifySilentAntiBypass(token);
         }
     </script>
 </body>
